@@ -7,9 +7,9 @@ const getTransactions = async (req, res) => {
     try {
         // Extract Ethereum address from request parameters
         const { address } = req.params;
-        
+        const ETHER_KEY = process.env.ETHER_KEY;
         // Define the Etherscan API URL to fetch transactions for the given address
-        const url = `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=YD69YUCPU56KPQTCZFFEEIGG2DU62FGWAZ`;
+        const url = `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${ETHER_KEY}`;
 
         // Make a GET request to the Etherscan API
         const response = await axios.get(url);
